@@ -1,0 +1,78 @@
+# Standards: 0.1
+---
+# @var tunnelblick_user:description: User to run user-specific commands
+# @var tunnelblick_user:value: tunnelblick_user | default(homebrew_user) | default(ansible_user_id)
+# tunnelblick_user:
+
+# @var tunnelblick_global_configs:description: List of global vpn configs
+# @var tunnelblick_global_configs:example: >
+# tunnelblick_global_configs:
+#   - name: Example
+#     host: vpn.example.com
+#     port: 1194
+#     ca: |
+#       -----BEGIN CERTIFICATE-----
+#       REDACTED
+#       -----END CERTIFICATE-----
+#     crt: |
+#       -----BEGIN CERTIFICATE-----
+#       REDACTED
+#       -----END CERTIFICATE-----
+#     key: |
+#       -----BEGIN RSA PRIVATE KEY-----
+#       REDACTED
+#       -----END RSA PRIVATE KEY-----
+#     auth: |
+#       -----BEGIN OpenVPN Static key V1-----
+#       REDACTED
+#       -----END OpenVPN Static key V1-----
+# @end
+tunnelblick_global_configs: []
+
+# @var tunnelblick_local_configs:description: List of global vpn configs
+# @var tunnelblick_local_configs:example: >
+# tunnelblick_local_configs:
+#   - name: Example
+#     host: vpn.example.com
+#     port: 1194
+#     ca: |
+#       -----BEGIN CERTIFICATE-----
+#       REDACTED
+#       -----END CERTIFICATE-----
+#     crt: |
+#       -----BEGIN CERTIFICATE-----
+#       REDACTED
+#       -----END CERTIFICATE-----
+#     key: |
+#       -----BEGIN RSA PRIVATE KEY-----
+#       REDACTED
+#       -----END RSA PRIVATE KEY-----
+#     auth: |
+#       -----BEGIN OpenVPN Static key V1-----
+#       REDACTED
+#       -----END OpenVPN Static key V1-----
+# @end
+tunnelblick_local_configs: []
+
+# @var tunnelblick_enable_automatic_checks:description: Enable automatic checks
+tunnelblick_enable_automatic_checks: True
+
+# @var tunnelblick_launch_at_next_login:description: Launch at next login
+tunnelblick_launch_at_next_login: True
+
+# @var tunnelblick_update_check_automatically:description: Update check automatically
+tunnelblick_update_check_automatically: True
+
+# @var tunnelblick_skip_dnsproblem_warning:description: Skip warning about dns problems
+tunnelblick_skip_dnsproblem_warning: True
+
+# @var tunnelblick_skip_ipnotfetched_warning:description: Skip warning that ip not fetched before connection
+tunnelblick_skip_ipnotfetched_warning: True
+
+# @var tunnelblick_skip_ipchange_warning:description: Skip warning that ip address did not change after connection
+tunnelblick_skip_ipchange_warning: True
+
+# @var tunnelblick_started:description: Start in background after install
+tunnelblick_started: True
+
+...
