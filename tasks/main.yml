@@ -54,7 +54,6 @@
       tags:
         - tunnelblick
 
-
     - name: Create local directory
       loop: "{{ tunnelblick_local_configs }}"
       loop_control:
