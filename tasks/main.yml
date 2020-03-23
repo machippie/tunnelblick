@@ -46,14 +46,17 @@
       tags:
         - tunnelblick
 
-    - name: Remove quarantine flag
-      register: tunnelblick_quarantine
-      failed_when: tunnelblick_quarantine.rc != 0 and "No such xattr" not in tunnelblick_quarantine.stderr
-      changed_when: tunnelblick_quarantine.rc == 0
-      command: xattr -d com.apple.quarantine /Applications/Tunnelblick.app
-      tags:
-        - tunnelblick
+- name: Remove quarantine flag
+  register: tunnelblick_quarantine
+  failed_when: tunnelblick_quarantine.rc != 0 and "No such xattr" not in tunnelblick_quarantine.stderr
+  changed_when: tunnelblick_quarantine.rc == 0
+  command: xattr -d com.apple.quarantine /Applications/Tunnelblick.app
+  tags:
+    - tunnelblick
 
+- become: "{{ (tunnelblick_user != ansible_user_id) | bool }}"
+  become_user: "{{ tunnelblick_user }}"
+  block:
     - name: Create local directory
       loop: "{{ tunnelblick_local_configs }}"
       loop_control:
@@ -83,104 +86,6 @@
         owner: "{{ tunnelblick_user }}"
         group: staff
         mode: u=rwx,g=r,o=
-      tags:
-        - tunnelblick
-
-    - name: Has launched before
-      notify:
-        - Kill tunnelblick
-        - Start tunnelblick
-      osx_defaults:
-        domain: net.tunnelblick.tunnelblick
-        key: SUHasLaunchedBefore
-        type: bool
-        value: True
-        state: present
-      tags:
-        - tunnelblick
-
-    - name: Enable automatic checks
-      notify:
-        - Kill tunnelblick
-        - Start tunnelblick
-      osx_defaults:
-        domain: net.tunnelblick.tunnelblick
-        key: SUEnableAutomaticChecks
-        type: bool
-        value: "{{ tunnelblick_enable_automatic_checks }}"
-        state: present
-      tags:
-        - tunnelblick
-
-    - name: Launch next login
-      notify:
-        - Kill tunnelblick
-        - Start tunnelblick
-      osx_defaults:
-        domain: net.tunnelblick.tunnelblick
-        key: launchAtNextLogin
-        type: bool
-        value: '{{ tunnelblick_launch_at_next_login }}'
-        state: present
-      tags:
-        - tunnelblick
-
-    - name: Update check automatically
-      notify:
-        - Kill tunnelblick
-        - Start tunnelblick
-      osx_defaults:
-        domain: net.tunnelblick.tunnelblick
-        key: updateCheckAutomatically
-        type: bool
-        value: '{{ tunnelblick_update_check_automatically }}'
-        state: present
-      tags:
-        - tunnelblick
-
-    - name: Skip dnsproblem warning
-      notify:
-        - Kill tunnelblick
-        - Start tunnelblick
-      osx_defaults:
-        domain: net.tunnelblick.tunnelblick
-        key: skipWarningAboutDnsProblems
-        type: bool
-        value: '{{ tunnelblick_skip_dnsproblem_warning }}'
-        state: present
-      tags:
-        - tunnelblick
-
-    - name: Skip ipnotfetched warning
-      notify:
-        - Kill tunnelblick
-        - Start tunnelblick
-      osx_defaults:
-        domain: net.tunnelblick.tunnelblick
-        key: skipWarningThatIPANotFetchedBeforeConnection
-        type: bool
-        value: '{{ tunnelblick_skip_ipnotfetched_warning }}'
-        state: present
-      tags:
-        - tunnelblick
-
-    - name: Skip ipchange warning
-      notify:
-        - Kill tunnelblick
-        - Start tunnelblick
-      osx_defaults:
-        domain: net.tunnelblick.tunnelblick
-        key: skipWarningThatIPAddressDidNotChangeAfterConnection
-        type: bool
-        value: '{{ tunnelblick_skip_ipchange_warning }}'
-        state: present
-      tags:
-        - tunnelblick
-
-    - name: Start background application
-      when: tunnelblick_started
-      changed_when: False
-      command: open -j /Applications/Tunnelblick.app
       tags:
         - tunnelblick
 

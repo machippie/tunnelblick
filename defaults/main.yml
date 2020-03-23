@@ -54,24 +54,6 @@ tunnelblick_global_configs: []
 # @end
 tunnelblick_local_configs: []
 
-# @var tunnelblick_enable_automatic_checks:description: Enable automatic checks
-tunnelblick_enable_automatic_checks: True
-
-# @var tunnelblick_launch_at_next_login:description: Launch at next login
-tunnelblick_launch_at_next_login: True
-
-# @var tunnelblick_update_check_automatically:description: Update check automatically
-tunnelblick_update_check_automatically: True
-
-# @var tunnelblick_skip_dnsproblem_warning:description: Skip warning about dns problems
-tunnelblick_skip_dnsproblem_warning: True
-
-# @var tunnelblick_skip_ipnotfetched_warning:description: Skip warning that ip not fetched before connection
-tunnelblick_skip_ipnotfetched_warning: True
-
-# @var tunnelblick_skip_ipchange_warning:description: Skip warning that ip address did not change after connection
-tunnelblick_skip_ipchange_warning: True
-
 # @var tunnelblick_started:description: Start in background after install
 tunnelblick_started: True
 
