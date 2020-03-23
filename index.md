@@ -1,16 +1,6 @@
 
 ## Default Variables
 
-### tunnelblick_enable_automatic_checks
-
-Enable automatic checks
-
-#### Default value
-
-```yaml
-tunnelblick_enable_automatic_checks: true
-```
-
 ### tunnelblick_global_configs
 
 List of global vpn configs
@@ -44,16 +34,6 @@ tunnelblick_global_configs:
       -----BEGIN OpenVPN Static key V1-----
       REDACTED
       -----END OpenVPN Static key V1-----
-```
-
-### tunnelblick_launch_at_next_login
-
-Launch at next login
-
-#### Default value
-
-```yaml
-tunnelblick_launch_at_next_login: true
 ```
 
 ### tunnelblick_local_configs
@@ -91,36 +71,6 @@ tunnelblick_local_configs:
       -----END OpenVPN Static key V1-----
 ```
 
-### tunnelblick_skip_dnsproblem_warning
-
-Skip warning about dns problems
-
-#### Default value
-
-```yaml
-tunnelblick_skip_dnsproblem_warning: true
-```
-
-### tunnelblick_skip_ipchange_warning
-
-Skip warning that ip address did not change after connection
-
-#### Default value
-
-```yaml
-tunnelblick_skip_ipchange_warning: true
-```
-
-### tunnelblick_skip_ipnotfetched_warning
-
-Skip warning that ip not fetched before connection
-
-#### Default value
-
-```yaml
-tunnelblick_skip_ipnotfetched_warning: true
-```
-
 ### tunnelblick_started
 
 Start in background after install
@@ -129,16 +79,6 @@ Start in background after install
 
 ```yaml
 tunnelblick_started: true
-```
-
-### tunnelblick_update_check_automatically
-
-Update check automatically
-
-#### Default value
-
-```yaml
-tunnelblick_update_check_automatically: true
 ```
 
 ### tunnelblick_user
